@@ -11,15 +11,11 @@ var Message = require('./models/message');
 
         // sample api route
         app.get('/api/messages', function(req, res) {
-            // use mongoose to get all nerds in the database
             Message.find(function(err, messages) {
-
-                // if there is an error retrieving, send the error. 
-                                // nothing after res.send(err) will execute
                 if (err)
                     res.send(err);
 
-                res.json(messages); // return all nerds in JSON format
+                res.json(messages);
             });
         });
 

@@ -1,7 +1,7 @@
 // app/routes.js
 
 // grab the message model we just created
-var Nerd = require('./models/message');
+var Message = require('./models/message');
 
     module.exports = function(app) {
 

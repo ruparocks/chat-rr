@@ -1,6 +1,5 @@
 // app/routes.js
-
-// grab the message model we just created
+var path = require('path');
 var Message = require('./models/message');
 
     module.exports = function(app) {
@@ -20,12 +19,19 @@ var Message = require('./models/message');
         });
 
         // route to handle creating goes here (app.post)
-        // route to handle delete goes here (app.delete)
+        app.post('/api/messages', function(req, res) {
+            Message.find(function(err, messages) {
+                if (err)
+                    res.send(err);
+
+                res.json(messages);
+            });
+        });
 
         // frontend routes =========================================================
         // route to handle all angular requests
         app.get('*', function(req, res) {
-            res.sendFile('./public/views/index.html'); // load our public/index.html file
+            res.sendFile(path.resolve('./public/views/index.html')); // load our public/index.html file
         });
 
     };
